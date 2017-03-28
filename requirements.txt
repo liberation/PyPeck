@@ -1,0 +1,5 @@
+BeautifulSoup==3.2.1
+html5lib==0.999999999
+pyconst==1.0.7
+tweepy==3.5.0
+
