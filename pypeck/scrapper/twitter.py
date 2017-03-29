@@ -38,7 +38,7 @@ class TwitterScrapper(Scrapper):
 
     def extract_provider_content(self):
         self.tweet = self.get_api().get_status(self.get_tweet_id(),
-                                                tweet_mode="extended")
+                                               tweet_mode="extended")
 
     def get_richtext(self):
         # Note: the algo is based on the fact that links can't overlap

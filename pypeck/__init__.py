@@ -7,9 +7,7 @@ class PyPeck(object):
         self.scrapper = Scrapper.get_scrapper_for_url(url)
 
     def process(self):
-        pass
+        self.scrapper.extract_metas()
 
-
-
-
-
+    def get_datas(self):
+        return self.scrapper.get_datas()

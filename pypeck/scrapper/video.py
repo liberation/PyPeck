@@ -62,4 +62,3 @@ class VideoScrapper(Scrapper):
             'provider': self.get_provider(),
             'aspect_ratio': self.get_aspect_ratio(),
         }
-

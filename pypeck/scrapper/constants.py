@@ -12,22 +12,32 @@ OEMBED_ENDPOINTS = [
     {
         "name": "Facebook Post",
         "templates": [
-          "(?:www|m|business)\\.facebook\\.com/(permalink|story)\\.php\\?[^/]+(\\d{10,})",
-          "(?:www|m|business)\\.facebook\\.com/photo\\.php\\?[^/]+(\\d{10,})",
-          "(?:www|m|business)\\.facebook\\.com/([a-zA-Z0-9\\.\\-]+)/(posts|activity)/(\\d{10,})",
-          "(?:www|m|business)\\.facebook\\.com/([a-zA-Z0-9\\.\\-]+)/photos/[^\\/]+/(\\d{10,})",
-          "(?:www|m|business)\\.facebook\\.com/notes/([a-zA-Z0-9\\.\\-]+)/[^/]+/(\\d{10,})",
-          "(?:www|m|business)\\.facebook\\.com/media/set/\\?set=[^/]+(\\d{10,})"
+          "(?:www|m|business)\\.facebook\\.com/"
+          "(permalink|story)\\.php\\?[^/]+(\\d{10,})",
+          "(?:www|m|business)\\.facebook\\.com/"
+          "photo\\.php\\?[^/]+(\\d{10,})",
+          "(?:www|m|business)\\.facebook\\.com/"
+          "([a-zA-Z0-9\\.\\-]+)/(posts|activity)/(\\d{10,})",
+          "(?:www|m|business)\\.facebook\\.com/"
+          "([a-zA-Z0-9\\.\\-]+)/photos/[^\\/]+/(\\d{10,})",
+          "(?:www|m|business)\\.facebook\\.com/notes/"
+          "([a-zA-Z0-9\\.\\-]+)/[^/]+/(\\d{10,})",
+          "(?:www|m|business)\\.facebook\\.com/media/set/"
+          "\\?set=[^/]+(\\d{10,})"
         ],
         "endpoint": "https://www.facebook.com/plugins/post/oembed.json/"
     },
     {
         "name": "Facebook Video",
         "templates": [
-          "(?:www|business)\\.facebook\\.com/video/video\\.php.*[\\?&]v=(\\d{5,})(?:$|&)",
-          "(?:www|business)\\.facebook\\.com/video/video\\.php\\?v=(\\d{5,})",
-          "(?:www|business)\\.facebook\\.com/video\\.php.*[\\?&]v=(\\d{5,})(?:$|&)",
-          "(?:www|business)\\.facebook\\.com/video\\.php.*[\\?&]id=(\\d{5,})(?:$|&)",
+          "(?:www|business)\\.facebook\\.com/video/"
+          "video\\.php.*[\\?&]v=(\\d{5,})(?:$|&)",
+          "(?:www|business)\\.facebook\\.com/video/"
+          "video\\.php\\?v=(\\d{5,})",
+          "(?:www|business)\\.facebook\\.com/"
+          "video\\.php.*[\\?&]v=(\\d{5,})(?:$|&)",
+          "(?:www|business)\\.facebook\\.com/"
+          "video\\.php.*[\\?&]id=(\\d{5,})(?:$|&)",
           "(?:www|business)\\.facebook\\.com/[a-zA-Z0-9.]+/videos/.+"
         ],
         "endpoint": "https://www.facebook.com/plugins/video/oembed.json/"
@@ -35,14 +45,16 @@ OEMBED_ENDPOINTS = [
     {
         "name": "Facebook Page",
         "templates": [
-            "(www|m)\\.facebook\\.com/([a-zA-Z0-9\\.\\-]+)/?(?:\\?f?ref=\\w+)?$"
+            "(www|m)\\.facebook\\.com/"
+            "([a-zA-Z0-9\\.\\-]+)/?(?:\\?f?ref=\\w+)?$"
         ],
         "endpoint": "https://www.facebook.com/plugins/page/oembed.json/"
     },
     {
         "name": "YouTube",
         "templates": [
-            "(?:www\\.)?youtube\\.com/(?:tv#/)?watch\\?(?:[^&]+&)*v=([a-zA-Z0-9_-]+)",
+            "(?:www\\.)?youtube\\.com/(?:tv#/)"
+            "?watch\\?(?:[^&]+&)*v=([a-zA-Z0-9_-]+)",
             "youtu\\.be/([a-zA-Z0-9_-]+)",
             "m\\.youtube\\.com/#/watch\\?(?:[^&]+&)*v=([a-zA-Z0-9_-]+)",
             "www\\.youtube\\.com/embed/([a-zA-Z0-9_-]+)",
