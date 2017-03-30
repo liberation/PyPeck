@@ -93,4 +93,4 @@ def parse_datetime(value):
             tzinfo = FixedOffset(offset)
         kw = dict((k, int(v)) for k, v in kw.iteritems() if v is not None)
         kw['tzinfo'] = tzinfo
-        return datetime.datetime(**kw)
+        return datetime(**kw)
