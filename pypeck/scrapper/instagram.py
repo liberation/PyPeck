@@ -66,8 +66,9 @@ class InstagramScrapper(Scrapper):
     def get_datas(self):
         return {
             'id': self.get_id(),
-            'caption': self.get_caption(),
             'provider': self.get_provider(),
+            'caption': self.get_caption(),
+            'date': self.get_date(),
             'image': self.get_image(),
             'video': self.get_video(),
             'url': self.get_url(),
