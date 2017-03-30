@@ -79,29 +79,6 @@ OEMBED_ENDPOINTS = [
         "endpoint": "http://www.slideshare.net/api/oembed/2"
     },
     {
-        "name": "Twitter Moments",
-        "templates": [
-            "twitter\\.com/i/moments/(\\d+)"
-        ],
-        "endpoint": "https://publish.twitter.com/oembed"
-    },
-    {
-        "name": "Twitter Timelines",
-        "templates": [
-            "twitter\\.com/(\\w+)/timelines/(\\d+)",
-            "twitter\\.com/(\\w+)/lists/(\\w+)",
-            "twitter\\.com/(\\w+)/likes"
-        ],
-        "endpoint": "https://publish.twitter.com/oembed"
-    },
-    {
-        "name": "Twitter Users",
-        "templates": [
-            "twitter\\.com/(\\w+)$"
-        ],
-        "endpoint": "https://publish.twitter.com/oembed"
-    },
-    {
         "name": "Instagr.am",
         "templates": [
             "([\\w\\.]*instagram\\.com/p/([a-zA-Z0-9_-]+))",
