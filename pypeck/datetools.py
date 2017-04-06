@@ -1,5 +1,7 @@
 import re
-from datetime import datetime, timedelta, tzinfo
+from datetime import datetime
+from datetime import timedelta
+from datetime import tzinfo
 
 try:
     import pytz
@@ -10,7 +12,7 @@ datetime_re = re.compile(
     r'(?P<year>\d{4})-(?P<month>\d{1,2})-(?P<day>\d{1,2})'
     r'[T ](?P<hour>\d{1,2}):(?P<minute>\d{1,2})'
     r'(?::(?P<second>\d{1,2})(?:\.(?P<microsecond>\d{1,6})\d{0,6})?)?'
-    r'(?P<tzinfo>Z|[+-]\d{1,2}:\d{1,2})?$'
+    r'(?P<tzinfo>Z|[+-]\d{2}(?::?\d{2})?)?$'
 )
 
 ZERO = timedelta(0)
@@ -37,23 +39,18 @@ class UTC(tzinfo):
 
 
 class FixedOffset(tzinfo):
-    "Fixed offset in minutes east from UTC."
-    def __init__(self, offset):
-        if isinstance(offset, timedelta):
-            self.__offset = offset
-            offset = self.__offset.seconds // 60
-        else:
+    """
+    Fixed offset in minutes east from UTC. Taken from Python's docs.
+    Kept as close as possible to the reference version. __init__ was changed
+    to make its arguments optional, according to Python's requirement that
+    tzinfo subclasses can be instantiated without arguments.
+    """
+
+    def __init__(self, offset=None, name=None):
+        if offset is not None:
             self.__offset = timedelta(minutes=offset)
-
-        sign = '-' if offset < 0 else '+'
-        self.__name = u"%s%02d%02d" % (sign, abs(offset) / 60.,
-                                       abs(offset) % 60)
-
-    def __repr__(self):
-        return self.__name
-
-    def __getinitargs__(self):
-        return self.__offset,
+        if name is not None:
+            self.__name = name
 
     def utcoffset(self, dt):
         return self.__offset
@@ -62,21 +59,27 @@ class FixedOffset(tzinfo):
         return self.__name
 
     def dst(self, dt):
-        return timedelta(0)
+        return ZERO
 
 utc = pytz.utc if pytz else UTC()
 
 
+def get_fixed_timezone(offset):
+    """Return a tzinfo instance with a fixed offset from UTC."""
+    if isinstance(offset, timedelta):
+        offset = offset.seconds // 60
+    sign = '-' if offset < 0 else '+'
+    hhmm = '%02d%02d' % divmod(abs(offset), 60)
+    name = sign + hhmm
+    return FixedOffset(offset, name)
+
+
 def parse_datetime(value):
-    """Parses a string and return a datetime.datetime.
-
+    """Parse a string and return a datetime.datetime.
     This function supports time zone offsets. When the input contains one,
-    the output uses an instance of FixedOffset as tzinfo.
-
-    Sub-microsecond precision is accepted, but ignored.
-
-    Raises ValueError if the input is well formatted but not a valid datetime.
-    Returns None if the input isn't well formatted.
+    the output uses a timezone with a fixed offset from UTC.
+    Raise ValueError if the input is well formatted but not a valid datetime.
+    Return None if the input isn't well formatted.
     """
     match = datetime_re.match(value)
     if match:
@@ -87,10 +90,11 @@ def parse_datetime(value):
         if tzinfo == 'Z':
             tzinfo = utc
         elif tzinfo is not None:
-            offset = 60 * int(tzinfo[1:3]) + int(tzinfo[4:6])
+            offset_mins = int(tzinfo[-2:]) if len(tzinfo) > 3 else 0
+            offset = 60 * int(tzinfo[1:3]) + offset_mins
             if tzinfo[0] == '-':
                 offset = -offset
-            tzinfo = FixedOffset(offset)
-        kw = dict((k, int(v)) for k, v in kw.iteritems() if v is not None)
+            tzinfo = get_fixed_timezone(offset)
+        kw = {k: int(v) for k, v in kw.items() if v is not None}
         kw['tzinfo'] = tzinfo
         return datetime(**kw)
