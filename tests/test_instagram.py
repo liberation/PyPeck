@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import unittest
-from datetime import datetime
 from pypeck.scrapper import Scrapper
 from pypeck.scrapper.instagram import InstagramScrapper
 
