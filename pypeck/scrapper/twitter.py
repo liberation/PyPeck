@@ -139,7 +139,7 @@ class TwitterScrapper(Scrapper):
             'user': {
                 "id": str(self.tweet.user.id),
                 "name": self.tweet.user.name,
-                "screen_name": self.tweet.user.screen_name,
+                "username": self.tweet.user.screen_name,
                 "url": self.tweet.user.url,
                 "avatar": self.tweet.user.profile_image_url
             },
