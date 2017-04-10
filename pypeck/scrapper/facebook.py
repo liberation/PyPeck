@@ -29,6 +29,7 @@ class FacebookScrapper(Scrapper):
     def __init__(self, *args, **kwargs):
         super(FacebookScrapper, self).__init__(*args, **kwargs)
         self.api_data = {}
+        self.user_id = None
 
         self.API = facebook.GraphAPI(
             access_token=self.config.get('facebook', {}).get('TOKEN', None),
@@ -44,8 +45,8 @@ class FacebookScrapper(Scrapper):
             r'(posts|activity|photos|videos)/([^/]*/)?(\d{10,})',
             self.get_url())[0]
 
-        user_id = self.API.get_object(username).get('id')
-        return "{}_{}".format(user_id, post_id)
+        self.user_id = self.API.get_object(username).get('id')
+        return "{}_{}".format(self.user_id, post_id)
 
     def extract_provider_content(self):
         self.api_data = self.API.get_object(
@@ -74,6 +75,8 @@ class FacebookScrapper(Scrapper):
             'url': u'https://www.facebook.com/{}'.format(
                 self.api_data.get('from').get('id')
             ),
+            'avatar': 'https://graph.facebook.com/{}/picture'.format(
+                self.user_id),
         }
 
     def get_date(self):
