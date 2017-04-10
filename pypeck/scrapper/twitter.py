@@ -141,7 +141,7 @@ class TwitterScrapper(Scrapper):
                 "name": self.tweet.user.name,
                 "screen_name": self.tweet.user.screen_name,
                 "url": self.tweet.user.url,
-                "profile_picture": self.tweet.user.profile_image_url
+                "avatar": self.tweet.user.profile_image_url
             },
             'media': self.get_media(),
             'provider': self.get_provider(),
