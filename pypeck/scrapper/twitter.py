@@ -110,7 +110,7 @@ class TwitterScrapper(Scrapper):
             elif media_type == 'photo':
                 large_sizes = media.get('sizes').get('large')
                 return {
-                    'media_url': media.get('media_url_https'),
+                    'url': media.get('media_url_https'),
                     'aspect_ratio': (float(large_sizes.get('h')) /
                                      float(large_sizes.get('w')))
                 }
