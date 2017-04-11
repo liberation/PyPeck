@@ -31,5 +31,6 @@ class TwitterScrapperTest(unittest.TestCase):
 
         self.assertEqual(
             datas.keys(),
-            ['text', 'provider', 'rich_text', 'user', 'media', 'date', 'id', ]
+            ['text', 'provider', 'rich_text', 'user', 'media', 'date',
+             'type','id', ]
         )

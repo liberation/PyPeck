@@ -15,9 +15,9 @@ class ArticleScrapperTest(unittest.TestCase):
         scrapper.extract_metas()
 
         datas = scrapper.get_datas()
-        self.assertEqual(
+        self.assertItemsEqual(
             datas.keys(),
-            ['abstract', 'title', 'image', 'provider']
+            ['abstract', 'title', 'image', 'provider', 'type']
         )
 
         scrapper = Scrapper.get_scrapper_for_url(
@@ -30,9 +30,9 @@ class ArticleScrapperTest(unittest.TestCase):
         scrapper.extract_metas()
 
         datas = scrapper.get_datas()
-        self.assertEqual(
+        self.assertItemsEqual(
             datas.keys(),
-            ['abstract', 'title', 'image', 'provider']
+            ['abstract', 'title', 'image', 'provider', 'type']
         )
 
         scrapper = Scrapper.get_scrapper_for_url(
@@ -43,9 +43,9 @@ class ArticleScrapperTest(unittest.TestCase):
 
         scrapper.extract_metas()
         datas = scrapper.get_datas()
-        self.assertEqual(
+        self.assertItemsEqual(
             datas.keys(),
-            ['abstract', 'title', 'image', 'provider']
+            ['abstract', 'title', 'image', 'provider', 'type']
         )
 
         scrapper = Scrapper.get_scrapper_for_url(
@@ -55,9 +55,9 @@ class ArticleScrapperTest(unittest.TestCase):
         self.assertIs(scrapper.__class__, ArticleScrapper)
         scrapper.extract_metas()
         datas = scrapper.get_datas()
-        self.assertEqual(
+        self.assertItemsEqual(
             datas.keys(),
-            ['abstract', 'title', 'image', 'provider']
+            ['abstract', 'title', 'image', 'provider', 'type']
         )
 
         scrapper = Scrapper.get_scrapper_for_url(
@@ -68,7 +68,7 @@ class ArticleScrapperTest(unittest.TestCase):
         scrapper.extract_metas()
         datas = scrapper.get_datas()
         self.assertIsNone(datas.get('image'))
-        self.assertEqual(
+        self.assertItemsEqual(
             datas.keys(),
-            ['abstract', 'title', 'image', 'provider']
+            ['abstract', 'title', 'image', 'provider', 'type']
         )

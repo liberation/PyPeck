@@ -36,6 +36,10 @@ class Scrapper(object):
         },
     }
 
+    def __new__(cls, *args, **kwargs):
+        cls.get_datas = Scrapper.data_decorator(cls.get_datas)
+        return super(Scrapper, cls).__new__(cls, *args, **kwargs)
+
     def __init__(self, url, dom, config=None):
         if config:
             self.config.update(config)
@@ -86,6 +90,17 @@ class Scrapper(object):
         )
         result = urllib2.urlopen(request)
         return BeautifulSoup(result.read())
+
+    @staticmethod
+    def data_decorator(func):
+        def wrapper(*args, **kwargs):
+            data = func(*args, **kwargs)
+            data.update({
+                'type': args[0].type
+            })
+            return data
+
+        return wrapper
 
     def extract_metas(self):
         self.extract_og_metas()

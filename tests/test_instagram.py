@@ -15,10 +15,10 @@ class InstagramScrapperTest(unittest.TestCase):
         scrapper.extract_metas()
 
         datas = scrapper.get_datas()
-        self.assertEqual(
+        self.assertItemsEqual(
             datas.keys(),
             ['caption', 'video', 'url', 'provider', 'date', 'image', 'id',
-             'user']
+             'user', 'type']
         )
 
         self.assertIsNone(datas.get('video'))
@@ -35,10 +35,10 @@ class InstagramScrapperTest(unittest.TestCase):
 
         datas = scrapper.get_datas()
 
-        self.assertEqual(
+        self.assertItemsEqual(
             datas.keys(),
             ['caption', 'video', 'url', 'provider', 'date', 'image', 'id',
-             'user']
+             'user', 'type']
         )
         self.assertIsNotNone(datas.get('video'))
         self.assertEqual('1489193416', datas.get('date').strftime('%s'))

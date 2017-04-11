@@ -33,10 +33,12 @@ class FacebookScrapperTest(unittest.TestCase):
             datas.get('url'),
             'https://www.facebook.com/Liberation/posts/10155040633377394'
         )
-        self.assertEqual(datas.get('user'), {
-            'url': u'https://www.facebook.com/147126052393',
-            'username': u'Libération'}
-         )
+        self.assertItemsEqual(datas.get('user'), {
+            'url': 'https://www.facebook.com/147126052393',
+            'username': u'Libération',
+            'avatar': 'https://graph.facebook.com/147126052393/picture',
+            }
+        )
 
 
         scrapper = Scrapper.get_scrapper_for_url(

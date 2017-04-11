@@ -17,7 +17,6 @@ class VideoScrapperTest(unittest.TestCase):
         self.assertEqual(datas.get('aspect_ratio'), 0.5625)
         self.assertEqual(datas.get('provider'), 'YouTube')
 
-
         scrapper = Scrapper.get_scrapper_for_url(
             'https://vimeo.com/205021741',
         )
@@ -28,9 +27,9 @@ class VideoScrapperTest(unittest.TestCase):
         datas = scrapper.get_datas()
         self.assertEqual(datas.get('aspect_ratio'), 0.75)
         self.assertEqual(datas.get('provider'), 'Vimeo')
-        self.assertEqual(
+        self.assertItemsEqual(
             datas.keys(),
-            ['url', 'aspect_ratio', 'thumbnail_url', 'video_url', 'provider']
+            ['url', 'aspect_ratio', 'thumbnail_url', 'video_url', 'provider', 'type']
         )
 
         scrapper = Scrapper.get_scrapper_for_url(
@@ -44,7 +43,7 @@ class VideoScrapperTest(unittest.TestCase):
         datas=scrapper.get_datas()
         self.assertEqual(datas.get('aspect_ratio'), 0.5625)
         self.assertEqual(datas.get('provider'), 'Dailymotion')
-        self.assertEqual(
+        self.assertItemsEqual(
             datas.keys(),
-            ['url', 'aspect_ratio', 'thumbnail_url', 'video_url', 'provider']
+            ['url', 'aspect_ratio', 'thumbnail_url', 'video_url', 'provider', 'type']
         )
