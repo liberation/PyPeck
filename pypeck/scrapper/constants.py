@@ -12,33 +12,33 @@ OEMBED_ENDPOINTS = [
     {
         "name": "Facebook Post",
         "templates": [
-          "(?:www|m|business)\\.facebook\\.com/"
-          "(permalink|story)\\.php\\?[^/]+(\\d{10,})",
-          "(?:www|m|business)\\.facebook\\.com/"
-          "photo\\.php\\?[^/]+(\\d{10,})",
-          "(?:www|m|business)\\.facebook\\.com/"
-          "([a-zA-Z0-9\\.\\-]+)/(posts|activity)/(\\d{10,})",
-          "(?:www|m|business)\\.facebook\\.com/"
-          "([a-zA-Z0-9\\.\\-]+)/photos/[^\\/]+/(\\d{10,})",
-          "(?:www|m|business)\\.facebook\\.com/notes/"
-          "([a-zA-Z0-9\\.\\-]+)/[^/]+/(\\d{10,})",
-          "(?:www|m|business)\\.facebook\\.com/media/set/"
-          "\\?set=[^/]+(\\d{10,})"
+            "(?:www|m|business)\\.facebook\\.com/",
+            "(permalink|story)\\.php\\?[^/]+(\\d{10,})",
+            "(?:www|m|business)\\.facebook\\.com/"
+            "photo\\.php\\?[^/]+(\\d{10,})",
+            "(?:www|m|business)\\.facebook\\.com/"
+            "([a-zA-Z0-9\\.\\-]+)/(posts|activity)/(\\d{10,})",
+            "(?:www|m|business)\\.facebook\\.com/"
+            "([a-zA-Z0-9\\.\\-]+)/photos/[^\\/]+/(\\d{10,})",
+            "(?:www|m|business)\\.facebook\\.com/notes/"
+            "([a-zA-Z0-9\\.\\-]+)/[^/]+/(\\d{10,})",
+            "(?:www|m|business)\\.facebook\\.com/media/set/"
+            "\\?set=[^/]+(\\d{10,})"
         ],
         "endpoint": "https://www.facebook.com/plugins/post/oembed.json/"
     },
     {
         "name": "Facebook Video",
         "templates": [
-          "(?:www|business)\\.facebook\\.com/video/"
-          "video\\.php.*[\\?&]v=(\\d{5,})(?:$|&)",
-          "(?:www|business)\\.facebook\\.com/video/"
-          "video\\.php\\?v=(\\d{5,})",
-          "(?:www|business)\\.facebook\\.com/"
-          "video\\.php.*[\\?&]v=(\\d{5,})(?:$|&)",
-          "(?:www|business)\\.facebook\\.com/"
-          "video\\.php.*[\\?&]id=(\\d{5,})(?:$|&)",
-          "(?:www|business)\\.facebook\\.com/[a-zA-Z0-9.]+/videos/.+"
+            "(?:www|business)\\.facebook\\.com/video/",
+            "video\\.php.*[\\?&]v=(\\d{5,})(?:$|&)",
+            "(?:www|business)\\.facebook\\.com/video/"
+            "video\\.php\\?v=(\\d{5,})",
+            "(?:www|business)\\.facebook\\.com/"
+            "video\\.php.*[\\?&]v=(\\d{5,})(?:$|&)",
+            "(?:www|business)\\.facebook\\.com/"
+            "video\\.php.*[\\?&]id=(\\d{5,})(?:$|&)",
+            "(?:www|business)\\.facebook\\.com/[a-zA-Z0-9.]+/videos/.+"
         ],
         "endpoint": "https://www.facebook.com/plugins/video/oembed.json/"
     },
