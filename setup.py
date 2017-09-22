@@ -16,6 +16,7 @@ setup(
         'BeautifulSoup==3.2',
         'html5lib<=1.0',
         'pyconst==1.0',
-        'tweepy==3.5'
+        'tweepy==3.5',
+        'facebook-sdk',
     ],
 )

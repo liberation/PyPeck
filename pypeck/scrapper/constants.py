@@ -1,11 +1,11 @@
 from pyconst import Const
 
 ASSET_TYPES = Const(
-    ('Article', 'ARTICLE', 1),
-    ('Video', 'VIDEO', 2),
-    ('Twitter', 'TWITTER', 3),
-    ('Instagram', 'INSTAGRAM', 4),
-    ('Facebook', 'FACEBOOK', 4),
+    (u'Article', 'ARTICLE', 1),
+    (u'Video', 'VIDEO', 2),
+    (u'Twitter', 'TWITTER', 3),
+    (u'Instagram', 'INSTAGRAM', 4),
+    (u'Facebook', 'FACEBOOK', 4),
 )
 
 OEMBED_ENDPOINTS = [
